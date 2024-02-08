@@ -8,7 +8,8 @@ struct chanson{
     unsigned int duree;
 
     // lien / link
-    struct chanson * suivante;
+    struct chanson * next;
+    struct chanson * prev;
 };
 
 typedef struct chanson Chanson;
@@ -18,10 +19,16 @@ void lectureEnCours(Chanson * ajouer);
 Chanson * initChanson(char * titre, char * artiste, unsigned int duree);
 
 // Ajouter en tete
-void ajouterFileAttente(Chanson** pListe, char * titre, char * artiste, unsigned int duree);
+void addFirst(Chanson** pListe, char * titre, char * artiste, unsigned int duree);
 
 // Ajouter en fin de liste
-void ajouterPlayList(Chanson** pListe, char * titre, char * artiste, unsigned int duree);
+void addLast(Chanson** pListe, char * titre, char * artiste, unsigned int duree);
+
+// Effacer par artiste
+void deleteByArtist(Chanson** pListe, char * artisteAEffacer);
+
+// Approche double linkedlist
+void deleteByArtistTwo(Chanson** pListe, char * artisteAEffacer);
 
 // procedure liberation
 void viderPlaylist(Chanson** pListe);
